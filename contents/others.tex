@@ -1,0 +1,172 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	Blocks, Alerts \& Math Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Blocks}
+\begin{frame}{Blocks, Alerts \& Math Environments}
+	\begin{block}{Notation}
+		This is some notation.
+	\end{block}
+
+	\begin{definition}
+		This is a definition.
+	\end{definition}
+	
+	\begin{remark}
+		And this is a remark.
+	\end{remark}
+\end{frame}
+
+\begin{frame}
+	\begin{theorem}[Existence \& Uniqueness for ...]
+		A theorem is important so it should be emphasised!
+	\end{theorem}
+
+	\begin{proposition}
+		A proposition may be a little less important but it's also worth emphasising!
+	\end{proposition}
+	
+	In the same way we can create lemmata \& corollaries.
+\end{frame}
+
+\begin{frame}\label{slide::ex-alert-el}
+	\begin{example}
+		Examples should be made. Of course normally only the mathematician understands why this text on the blackboard should be an example.
+	\end{example}
+
+	Finally
+		
+	\begin{alertblock}{Alert, alert}
+		An alert block has a catchy colour.
+	\end{alertblock}
+\end{frame}
+
+
+{
+%	\definecolor{dnvdarkblue}{RGB}{137,57,94}
+%	\definecolor{dnvgreen}{RGB}{57,137,100}
+%	\definecolor{dnvskyblue}{RGB}{255,175,0}
+	\begin{frame}{Red purple colour scheme}
+		Finally let us have a look at the second colour scheme:
+		
+		\begin{theorem}[Existence \& Uniqueness for ...]
+			A theorem is important so it should be emphasised!
+		\end{theorem}
+	
+		\begin{example}
+			Examples should be made. Of course normally only the mathematician understands why this text on the blackboard should be an example.
+		\end{example}
+	
+		\begin{alertblock}{Alert, alert}
+			An alert block has a catchy colour.
+		\end{alertblock}
+	\end{frame}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	Overlays \& Images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Overlays \& Images}
+\begin{frame}[fragile]
+	\frametitle{Overlays \& Images}
+	Complying with the old saying: \enquote{A picture speaks a thousand words}, we can create frames which only contain a picture by
+	\begin{center}
+		\texttt{\textbackslash imageFrame\{imageURL\}.}
+	\end{center}
+	We can also define an overlay on the left oder right side of the frame. By default the overlay has a width of 150pt. We can adjust as an optional argument.
+	\begin{verbatim} \imageFrameOverlayLeft[optional width]{%
+    ./gfx/horizontallift.pdf}{%
+    Want big impact?}{%
+    Use a big picture.} \end{verbatim}
+\end{frame}
+
+%%%%	image frame with overlay left
+\imageFrameOverlayLeft{%
+./gfx/horizontallift.pdf}{%
+Want big impact?}{%
+Use a big picture.}
+
+%%%%	image frame with overlay right, custom size
+\imageFrameOverlayRight[150pt]{%
+./gfx/horizontallift.pdf}{%
+Need a bigger overlay on the right side?}{%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	Listings, Tables, Highlighted Text \& Tikz
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Listings, Tables, Highlighted Text \& Tikz}
+
+\begin{frame}{Listings}
+	\begin{itemize}
+		\item Item $\sharp$1
+		\item Item $\sharp$2
+			\begin{itemize}
+				\item Subitem 2.$\sharp$1
+				\item Subitem 2.$\sharp$2
+			\end{itemize} 
+	\end{itemize}
+	and so on. We can also create highlighted lists:
+	\begin{itemize}[<+- | alert@+>]
+		\item \alert<4>{\only<-3>{Hi!}\only<4>{or here?}}
+		\item you
+		\item there!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tables}
+	\begin{center}
+		\arrayrulecolor{dnvdarkblue}
+		\begin{tabular}[]{lrrl}
+			\toprule
+								& \multicolumn{1}{c}{{\bfseries Dual space}}
+			                    & \multicolumn{1}{c}{{\bfseries Reflexive}}
+			                    & \multicolumn{1}{l}{{\bfseries Norm}} \\
+			\midrule
+			$\mathbb K^n$	& $\mathbb K^n$			& Yes			& $\Vert x\Vert_2 =\left(\sum_{i=1}^n |x_i|^2\right)^{\frac 12}$\\[0.5em]
+			$\ell_p$			& $\ell_q$				& Yes			& $\Vert x\Vert_p = \left( \sum_{i=1}^\infty |x_i|^p \right)^{\frac 1p}$\\[0.5em]
+			$\ell_1$			& $\ell_\infty$			& \alert{No}	& $\Vert x\Vert_1 = \sum_{i=1}^\infty |x_i|$\\[0.5em]
+			$\ell_\infty$	& {\small complicated}	& \alert{No}	& $\Vert x\Vert_\infty = \sup_i |x_i|$\\[0.5em]
+			$L^p(\mu)$		& $L^q(\mu)$			& Yes			& $\Vert f\Vert_p = \left( \int |f|^p \, \mathrm d\mu \right)^{\frac 1p}$\\[0.5em]
+			$L^1(\mu)$		& $L^\infty(\mu)$ 		& \alert{No} 	& $\Vert f\Vert_1 = \int |f| \, \mathrm d\mu$\\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	highlighted frame with number and 
+%%%%	optional subtext
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\highlightedFrame[such an impressive number should be big!]{89.432.567}
+
+\begin{frame}{Tikz}
+	\begin{center}
+	    \begin{tikzpicture}[scale=.8]
+	        \pgfmathsetseed{2236}
+	
+	        \fill (0,0) circle (2pt);
+		    \draw (0,0) ellipse (5 and 3);
+	    		\node at (5,-2.5) {$D \subsetneq \mathbb R^n$};
+	        
+	        \draw[decorate, decoration={random steps,segment length=5pt,amplitude=10pt}] [dnvdarkblue] plot [smooth, tension=1] coordinates { (0,0) (2,0) (0,2.5) (-3,0) (0,-1.5) (4,1.8)};
+	        \node[dnvdarkblue] at (2.8,-1.5) {BM with $p_t$, $T_t$};
+	        
+	        \node at (5.2,1.8) {$\partial D \ni x_0$};
+	        \fill (4,1.8) circle (1pt);
+	        
+	        \draw[->,dnvgreen,thick] (4,1.8) -- (3,1);
+	        
+	        \draw[->,dnvskyblue,thick] (4,1.8) -- (5,2.6);
+	        \fill (4,1.8) circle (.5pt);
+	    \end{tikzpicture}
+	\end{center}
+	
+	\begin{itemize}
+	    \item Trap, $x_0$ absorbing = Killing Brownian motion = Dirichlet problem
+	    \item {\color{dnvgreen} Reflected Brownian motion = Neumann problem}
+	    \item {\color{dnvskyblue} Wait an go on = Sticky Brownian motion}
+	\end{itemize}
+\end{frame}

@@ -1,0 +1,133 @@
+\documentclass[xetex,notheorems,hyperref={pdfpagelabels=true},xcolor={table},aspectratio=169]{beamer}
+\usetheme{dnv}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage[style=american]{csquotes}
+
+\usetikzlibrary{decorations.pathreplacing, decorations.pathmorphing,calc,arrows,positioning}
+
+
+
+%%% enable notes on second screen
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen=right}
+%\setbeamertemplate{note page}[compress]
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	define content of title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\talkTitle{Seminar on Cybersecurity of Rail transport}
+\def\talkShortTitle{TS 50701 }
+\def\talkSubtitle{TS 50701 \& IEC/ISO 62443 Standards}
+\def\talkKeywords{50701, 62443, cybersecurity, safety}
+
+%% Define meta data of pdf
+\hypersetup{
+    pdftitle={Slides to talk - \talkTitle},
+	pdfsubject={\talkTitle},
+	pdfauthor={Vincent Zhao},
+	pdfkeywords={\talkKeywords},
+	colorlinks=false
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	set content of title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[\talkShortTitle]{\talkTitle}  
+\subtitle{\talkSubtitle} 
+\author{Dr. Vincent Zhao}
+\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
+\date{\DTMtoday}
+\institute{%
+	\includegraphics[scale=.25]{./gfx/dnvlogo}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	theorem tools, theorem and proof styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{theorem}[ams style]
+%\setbeamertemplate{theorems}[numbered]
+
+\newcounter{chapter}
+\setcounter{chapter}{1}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{dummyblock}{dummyblock}
+
+\theoremstyle{example}
+\newtheorem{example}[theorem]{Example}
+
+\newenvironment<>{dummyblock}[1]{%
+	\setbeamercolor{block title}{fg=white,bg=white}%
+	\setbeamercolor{block body}{fg=normal text.fg,bg=white}%
+	\begin{block}#2{#1}}{\end{block}}
+
+
+\begin{document}
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\renewcommand\theta\vartheta
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	toc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+
+\input{contents/intro.tex}
+\input{contents/stands.tex}
+\input{contents/dnv_role.tex}
+%\input{contents/others.tex}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	conclusion frame
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conlusion}
+\begin{frame}[fragile]{Conclusion}
+
+%  Let me close addressing some thanks for the inspiration to the \href{https://github.com/matze/mtheme/}{metropolis mtheme}. This theme and its sources \& demo are completely hosted by
+%
+%  \begin{center}\url{https://github.com/vipowueb/minflat-beamer}\end{center}
+%
+%  It \emph{itself} is licensed under the
+%  \href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons
+%  Attribution-ShareAlike 4.0 International License}.
+
+  \begin{center}\ccbysa\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%	thanks slide, not in toc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sectionNotInTocAndNavigation{Thanks for your time. Questions?}
+
+
+\end{document}
